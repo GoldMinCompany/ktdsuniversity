@@ -144,7 +144,7 @@ public class CoffeeShopMain {
 ---
 # 9. 데이터 클래스
 
-* 속성은 있지만, 기는이 없는 클래스
+* 속성은 있지만, 기능이 없는 클래스
 * 일반적으로 VO(Value Object) 클래스로 부른다. 값만 정의된 클래스
 * java14부터 Data Class를 손쉽게 정의할 수 있다.
 
