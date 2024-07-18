@@ -141,5 +141,222 @@ public class CoffeeShopMain {
 }
 
 ```
+---
+# 9. 데이터 클래스
 
+* 속성은 있지만, 기는이 없는 클래스
+* 일반적으로 VO(Value Object) 클래스로 부른다. 값만 정의된 클래스
+* java14부터 Data Class를 손쉽게 정의할 수 있다.
+
+* has a 관계 : 클래스 내부에 멤버변수로 클래스가 있는 것을 has a 관계라 한다. 
+* is a 관계
+
+### * 데이터 클래스 실습
+
+```java
+package franchise;
+/**
+ * 자판기에서 판매하는 상품
+ * Data Class
+ * 지역변수와 생성자만 선언
+ */
+public class BeverageSolution {
+	
+	String name; //상품 이름
+	int price; //상품 가격
+	int stock; //상품 재고
+	
+	public BeverageSolution(String name, int price, int stock) {
+		
+		this.name = name;
+		this.price = price;
+		this.stock = stock;
+	}
+
+}
+```
+
+```java
+package franchise;
+
+/**
+ * 음료수를 판매하는 자판기
+ * 4개의 음료수를 판매
+ * has a 관계 
+ */
+public class BeverageVendingMachineSolution {
+	
+	BeverageSolution itemOne;
+	BeverageSolution itemTwo;
+	BeverageSolution itemThree;
+	BeverageSolution itemFour;
+	
+	//멤버변수 초기화
+	public BeverageVendingMachineSolution(BeverageSolution itemOne, BeverageSolution itemTwo, BeverageSolution itemThree, BeverageSolution itemFour) {
+		
+		this.itemOne = itemOne;
+		this.itemTwo = itemTwo;
+		this.itemThree = itemThree;
+		this.itemFour = itemFour;
+		
+	}
+	
+	
+	//주문하기
+	public BeverageSolution selectItemButton(String itemName, int pressTime) {
+		
+		if(this.itemOne.name.equals(itemName)) {
+			
+			if(this.itemOne.stock >= 0 && this.itemOne.stock >= pressTime) {
+				this.itemOne.stock -= pressTime;
+				
+				BeverageSolution outputItem = new BeverageSolution(this.itemOne.name,
+																	this.itemOne.price * pressTime, pressTime);
+				return outputItem; // 손님에게 상품을 전달한다. 
+			}
+			else {
+				System.out.println("상품이 품절되었습니다.");
+				return null;
+			}
+			
+			
+		}
+		else if(this.itemTwo.name.equals(itemName)) {
+			
+			if(this.itemTwo.stock >= 0 && this.itemTwo.stock >= pressTime) {
+				this.itemTwo.stock -= pressTime;
+				
+				BeverageSolution outputItem = new BeverageSolution(this.itemTwo.name,
+																	this.itemTwo.price * pressTime, pressTime);
+				return outputItem; // 손님에게 상품을 전달한다. 
+			}
+			else {
+				System.out.println("상품이 품절되었습니다.");
+				return null;
+			}
+			
+		}
+		else if(this.itemThree.name.equals(itemName)) {
+			
+			if(this.itemThree.stock >= 0 && this.itemThree.stock >= pressTime) {
+				this.itemThree.stock -= pressTime;
+				
+				BeverageSolution outputItem = new BeverageSolution(this.itemThree.name,
+																	this.itemThree.price * pressTime, pressTime);
+				return outputItem; // 손님에게 상품을 전달한다. 
+			}
+			else {
+				System.out.println("상품이 품절되었습니다.");
+				return null;
+			}
+			
+		}
+		else if(this.itemFour.name.equals(itemName)) {
+			
+			if(this.itemFour.stock >= 0 && this.itemFour.stock >= pressTime) {
+				this.itemFour.stock -= pressTime;
+				
+				BeverageSolution outputItem = new BeverageSolution(this.itemFour.name,
+																	this.itemFour.price * pressTime, pressTime);
+				return outputItem; // 손님에게 상품을 전달한다. 
+			}
+			else {
+				System.out.println("상품이 품절되었습니다.");
+				return null;
+			}
+			
+		}
+		else {
+			System.out.println("그런 상품은 없습니다.");
+		}
+		return null; // 메모리에 할당된 데이터가 없는 상태
+	}
+	//입고
+	public void fillItem(String itemName, int stock) {
+		
+		if(this.itemOne.name.equals(itemName)) {
+			this.itemOne.stock += stock;
+		}
+		else if(this.itemTwo.name.equals(itemName)) {
+			this.itemTwo.stock += stock;
+		}
+		else if(this.itemThree.name.equals(itemName)) {
+			this.itemThree.stock += stock;
+		}
+		else if(this.itemFour.name.equals(itemName)) {
+			this.itemFour.stock += stock;
+		}
+		else {
+			System.out.println("그런 상품은 팔지 않습니다.");
+		}
+		
+	}
+	//재고
+	public void printStock() {
+		
+		System.out.println(this.itemOne.name + " : " + this.itemOne.stock + "개" );
+		System.out.println(this.itemTwo.name + " : " + this.itemTwo.stock + "개" );
+		System.out.println(this.itemThree.name + " : " + this.itemThree.stock + "개" );
+		System.out.println(this.itemFour.name + " : " + this.itemFour.stock + "개" );
+
+	}
+	
+
+}
+```
+
+```java
+package franchise;
+
+public class BeverageMainSolution {
+
+	public static void main(String[] args) {
+		
+		BeverageSolution bacchas = new BeverageSolution("박카스", 900, 15);
+		BeverageSolution monster = new BeverageSolution("몬스터", 1500, 20);
+		BeverageSolution hotsix  = new BeverageSolution("핫식스", 1300, 10);
+		BeverageSolution milkiss = new BeverageSolution("밀키스", 1400, 5);
+		
+		
+		BeverageVendingMachineSolution bvms = new BeverageVendingMachineSolution(bacchas, monster, hotsix, milkiss);
+
+		
+		bvms.printStock();
+		BeverageSolution myItem = bvms.selectItemButton("스타벅스 더블샷", 2000);
+		System.out.println(myItem);
+		//System.out.println(myItem.name);
+		
+		BeverageSolution mySecondItem = bvms.selectItemButton("밀키스", 3);
+		System.out.println(mySecondItem);
+		System.out.println("구매한 상품의 이름 : "+mySecondItem.name);
+		System.out.println("구매한 상품의 가격 : "+mySecondItem.price);
+		System.out.println("구매한 상품의 개수 : "+mySecondItem.stock);
+		
+		bvms.printStock();
+		
+		bvms.selectItemButton("밀키스", 10);
+		bvms.printStock();
+		
+		
+		
+		BeverageSolution myThirdItem = bvms.selectItemButton("밀키스", 3);
+		System.out.println(myThirdItem);
+		//System.out.println("구매한 상품의 이름 : "+myThirdItem.name);
+		//System.out.println("구매한 상품의 가격 : "+myThirdItem.price);
+		//System.out.println("구매한 상품의 개수 : "+myThirdItem.stock);
+		
+		bvms.fillItem("밀키스", 10);
+		bvms.printStock();
+		
+	}
+
+}
+```
+
+# 9. 유틸리티 클래스
+
+* 기능만 존재하고 속성이 없는 클래스
+* 물리적으로 존재하지 않지만, OOP에서 흔하게 사용하는 클래스
+* 일반적으로 Utility 클래스 만들 때 사용
+* static이 붙음
 
