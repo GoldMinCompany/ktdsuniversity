@@ -28,9 +28,10 @@ Student student = new Student();
 1. **멤버변수의 초기화**
 2. 인스턴스 생성과 동시에 다른 메소드 호출
 
-### * this
+### * this 
 현재 호출되고 있는 인스턴스를 의미한다. 특시, 생성자 내부에서 this는 **생성자가 만든 인스턴스**를 가리킨다.
 
+### 생성자, this 실습
 ```java
 
 public class ConstructorTest {
@@ -78,3 +79,67 @@ public class ConstructorTestMain {
 
 }
 ```
+```java
+
+public class CoffeeShop {
+	
+	int iceAmericano;
+	int hotAmericano;
+	
+	
+	public CoffeeShop(int iceAmericano, int hotAmericano) {
+		
+		this.iceAmericano = iceAmericano;
+		this.hotAmericano = hotAmericano;
+		
+	}
+	
+	public int orderCoffee(int menu, int quantity) {
+		
+		if(menu == 1) {
+			return this.iceAmericano * quantity;
+		}
+		
+		return this.hotAmericano * quantity;
+		
+	}
+
+}
+
+```
+
+```java
+
+public class CoffeeShopMain {
+
+	public static void main(String[] args) {
+		
+		CoffeeShop tomAndToms = new CoffeeShop(5500, 5000);
+//		tomAndToms.iceAmericano = 5500;
+//		tomAndToms.hotAmericano = 5000;
+		
+		CoffeeShop mammoth = new CoffeeShop(1400, 1200);
+		
+//		mammoth.iceAmericano = 1400;
+//		mammoth.hotAmericano = 1200;
+		
+		
+		int tomAndTomsIceAmericanoPrice = tomAndToms.orderCoffee(1, 10);
+		int tomAndTomsHotAmericanoPrice = tomAndToms.orderCoffee(2, 5);
+		
+		System.out.println("탐탐 아아 : "+ tomAndTomsIceAmericanoPrice);
+		System.out.println("탐탐 아아 : "+ tomAndTomsHotAmericanoPrice);
+		
+		int mammothIceAmericanoPrice = mammoth.orderCoffee(1, 10);
+		int mammothHotAmericanoPrice = mammoth.orderCoffee(2, 10);
+		
+		System.out.println("메머드 아아 : "+ mammothIceAmericanoPrice);
+		System.out.println("메머드 뜨아 : "+ mammothHotAmericanoPrice);
+		
+	}
+
+}
+
+```
+
+
