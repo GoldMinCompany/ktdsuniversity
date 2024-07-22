@@ -8,13 +8,13 @@
   - 만약 naver.com 에서 package_exam application을 개발한다면, com.naver가 기본 패키지 명이 된다.
   - 기본 패키지명이 작성된 후 업무명을 "."을 붙여 작성한다.
   - 만약, 업무명이 "회원관리" 라면 업무명은 "member.management" 혹은 "management.member"로 작성한다.
-
+---
 # 접근제어 지시자
 * 패키지와 별개의 문제로 클래스, 멤버변수, 메소드 등을 외부 클래스나 인스턴스가 접근을 제한하는 기능이 있다.
 
   ![image](https://github.com/user-attachments/assets/ec268ba5-7437-4805-b20e-32f6001f784a)
 
-
+---
 # 정보은닉과 캡슐화
 * 인스턴스의 정보를 표현하는 멤버변수는 데이터의 보호를 위해 외부로부터 접근이 제한된다.
 * 멤버변수의 접근제한자는 private으로 선언하고 생성자를 통해 멤버변수의 값을 접근할 수 있다.
@@ -85,7 +85,7 @@ public class Article() {
   - 클래스 메소드는 인스턴스로 접근할 수 없다.
   ![image](https://github.com/user-attachments/assets/1378d801-e8e4-4ce2-ad0a-4acdc9a56026)
 
-
+---
 # 메소드 오버로딩
 * Java에서 작성하는 변수나 메소드(클래스, 인스턴스 생성자)는 유일한 이름으로 구분
 * 변수 중복선언, 메소드 중복선언 할 수 없다
