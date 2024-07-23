@@ -117,7 +117,15 @@ It was popularised in the 1960s with the release of Letraset sheets containing L
 }
 ```
 
-## 13. StringBuffer
+# 13. StringBuffer
 
 * StringBuffer 인스턴스의 append() Method를 사용해 문자열을 이어 붙인다.
 * 마지막으로 StringBuffer의 toString() Method를 사용해 하나의 문자열 인스턴스로 반환한다.
+---
+
+# 14. 배열(Array)
+
+* 동일한 타입의 값들을 메모리에 차례대로 나열시킨 구조를 말한다.
+* 생성자를 호출 할 때, new 키워드를 사용한다.
+* 메모리에 데이터 공간들이 나열되어 있고, 이것이 하나의 메모리 묶음으로 취급되어 Reference Type이다.
+* 주소값을 찾기 위하여 배열은 0부터 시작한다 
