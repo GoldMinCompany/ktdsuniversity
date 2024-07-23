@@ -128,4 +128,58 @@ It was popularised in the 1960s with the release of Letraset sheets containing L
 * 동일한 타입의 값들을 메모리에 차례대로 나열시킨 구조를 말한다.
 * 생성자를 호출 할 때, new 키워드를 사용한다.
 * 메모리에 데이터 공간들이 나열되어 있고, 이것이 하나의 메모리 묶음으로 취급되어 Reference Type이다.
-* 주소값을 찾기 위하여 배열은 0부터 시작한다 
+* 주소값을 찾기 위하여 배열은 0부터 시작한다
+
+### * 배열 실습
+```java
+package com.ktdsuniversity.edu.array;
+
+public class ArrayExam {
+	
+	public static void main(String[] args) {
+		
+		int[] scoreArray = new int[7];
+		System.out.println(scoreArray); //[I@5305068a : I(Integer) [(Array)
+		
+		// 배열 인덱스에 값을 할당한다.
+		scoreArray[0] = 10;
+		scoreArray[1] = 20;
+		scoreArray[2] = 30;
+		scoreArray[3] = 40;
+		scoreArray[4] = 50;
+		scoreArray[5] = 60;
+		scoreArray[6] = 70;
+		
+		// 배열을 탐색하면서 출력하고 합계를 구하기
+
+		int sum = 0;
+		
+//		sum += scoreArray[0];
+//		sum += scoreArray[1];
+//		sum += scoreArray[2];
+//		sum += scoreArray[3];
+//		sum += scoreArray[4];
+//		sum += scoreArray[5];
+//		sum += scoreArray[6];
+		
+		for(int i=0; i< scoreArray.length; i++) {
+			
+			sum += scoreArray[i];
+			
+		}
+		
+		System.out.println("합계 : "+ sum);
+		
+		double avg = sum / (double) scoreArray.length;
+		System.out.println("평균 : " + avg);
+		
+//		String[] nameArray = new String[7];
+//		System.out.println(nameArray); // [Ljava.lang.String;@1f32e575
+		
+		
+		
+		
+	}
+
+}
+```
