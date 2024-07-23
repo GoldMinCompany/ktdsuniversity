@@ -20,3 +20,8 @@ System.out.println("10+5의 결과는" + (10 + 5)); // 10+5결과는 15입니다
     - 즉, String이 참조하고 있던 메모리 주소는 끊어지며, 새로운 메모리 공간을 참조한다.
 
 * 문자열 내의 값이 많을 경우, 새로운 메모리 공간을 확보하고 값을 할당하는데 큰 비용(CPU, Memory)이 사용되기 때문에 추천하지 않는다. 즉, 많은 내용의 문자열을 연결할 필요가 있을 때, StringBuffer를 사용하는 것이 비용절약에 효율적인 방법이다.  
+
+## 13. StringBuffer
+
+* StringBuffer 인스턴스의 append() Method를 사용해 문자열을 이어 붙인다.
+* 마지막으로 StringBuffer의 toString() Method를 사용해 하나의 문자열 인스턴스로 반환한다.
