@@ -183,3 +183,185 @@ public class ArrayExam {
 
 }
 ```
+
+### * Student
+```java
+public class Student {
+	
+	private int java;
+	private int python;
+	private int cpp;
+	private int csharp;
+	
+	public Student(int java, int python, int cpp, int csharp) {
+		
+		this.java = java;
+		this.python = python;
+		this.cpp = cpp;
+		this.csharp = csharp;
+		
+	}
+	
+	public int getSumAllScores() {
+		return this.java + this.python + this.cpp + this.cpp ;
+	}
+	
+	public double getAverage() {
+		return (double) getSumAllScores() / 4;
+	}
+	
+	public double getCourseCredit() {
+		return (getAverage() - 55) / 10;
+	}
+	
+	public String getABCDEF() {
+		
+		String grade = null;
+		
+		if(getCourseCredit() >= 4.1) {
+			
+			grade = "A+";
+			
+		}
+		else if(getCourseCredit() >= 3.6) {
+			
+			grade = "A";
+			
+		}
+		else if(getCourseCredit() >= 3.1) {
+			
+			grade = "B+";
+			
+		}
+		else if(getCourseCredit() >= 2.6) {
+			
+			grade = "B";
+			
+		}
+		else if(getCourseCredit() >= 1.6) {
+			
+			grade = "C";
+			
+		}
+		else if(getCourseCredit() >= 0.6) {
+			
+			grade = "D";
+			
+		}
+		else {
+			
+			grade = "F";
+		}
+		
+		return grade;
+		
+	}
+	
+	
+
+}
+```
+
+### * ClassRoom
+
+```java
+public class ClassRoom {
+	Student[] student;
+	
+	public ClassRoom(int count) {
+		
+		this.student  = new Student[count];
+		
+	}
+	
+	public int getSumAllScores() {
+		
+		int sum = 0;
+		
+		for(int i=0; i<student.length; i++) {
+			
+				sum += student[i].getSumAllScores() / 4;
+		}
+		return sum;
+		
+	}
+	
+	public double getAverage() {
+		
+		return (double)Math.round((double) getSumAllScores()*10)/10 / student.length;
+		
+	}
+	
+	public double getCourseCredit() {
+		
+		
+		return (getAverage()-55) / 10;
+		
+	}
+	
+	public String getABCDEF() {
+		
+		String grade = null;
+		
+		if(getCourseCredit() >= 4.1) {
+			grade = "A+";
+		}
+		else if(getCourseCredit() >= 3.6) {
+			
+			grade = "A";
+		}
+		else if(getCourseCredit() >= 3.1) {
+			
+			grade = "B+";
+		}
+		else if(getCourseCredit() >= 2.6) {
+			
+			grade = "B";
+		}
+		else if(getCourseCredit() >= 1.6) {
+			
+			grade = "C";
+		}
+		else if(getCourseCredit() >= 0.6) {
+			
+			grade = "D";
+		}
+		else {
+			
+			grade = "F";
+		}
+		
+		return grade;
+	}
+	
+}
+```
+### * ClassRoomMain
+
+```java
+public class ClassRoomMain {
+
+	public static void main(String[] args) {
+		
+		ClassRoom classRoom = new ClassRoom(5);
+		
+		classRoom.student[0] = new Student(100, 100, 100, 100);
+		classRoom.student[1] = new Student(90, 90, 90, 90);
+		classRoom.student[2] = new Student(80, 80, 80, 80);
+		classRoom.student[3] = new Student(70, 70, 70, 70);
+		classRoom.student[4] = new Student(60, 60, 60, 60);
+		
+		
+		int sumScore = classRoom.getSumAllScores();
+		double average = classRoom.getAverage();
+		double courseCredit = classRoom.getCourseCredit();
+		String grade = classRoom.getABCDEF();
+		
+		System.out.println("합계 : " + sumScore);
+		System.out.println("평균 : " + average);
+		System.out.println("학점 : " + courseCredit);
+		System.out.println("등급 : " + grade);
+	}
+
+}
+```
