@@ -108,3 +108,153 @@ public class EmailContact extends Contact{
 }
 ```
 
+```java
+package com.ktdsuniversity.edu.extendsexam.practice;
+
+public class Vehicle {
+	/**
+	 * 자동차 모델명
+	 */
+	private String name;
+	
+	
+	/**
+	 * Vehicle 생성자
+	 */
+	public Vehicle(String name) {		
+		this.name = name;
+	}
+	
+	/**
+	 * 시동걸기
+	 */
+	
+	public void start() {
+		
+		System.out.println("차량이 출발합니다.");
+		
+	}
+	
+	public void printVehicle() {
+		
+		System.out.println("모델명 : " + this.name);
+	}
+	
+}
+```
+
+```java
+package com.ktdsuniversity.edu.extendsexam.practice;
+
+public class EV extends Vehicle {
+
+	private int battery;
+	
+	public EV(String name, int battery) {
+		super(name);
+		this.battery = battery;
+		
+	}
+	
+	public void checkBattery() {
+		
+		if(this.battery > 0) {
+			System.out.println("배터리 잔량 : " + this.battery);
+		}
+		else {
+			
+			this.battery = 0;
+			System.out.println("배터리 잔량 : " + this.battery);
+			
+		}
+		
+	}
+	
+	public void printEV() {
+		
+		super.printVehicle();
+		System.out.println("배터리 잔량 : " + this.battery);
+	}
+	
+}
+```
+
+```java
+package com.ktdsuniversity.edu.extendsexam.practice;
+
+public class SportsCar extends Vehicle {
+	
+	public SportsCar(String name) {
+		
+		super(name);
+		
+	}
+	
+	public void turboMode() {
+		
+		System.out.println("터보모드");
+		
+	}
+	
+	public void printSportsCar() {
+		
+		super.printVehicle();
+	}
+}
+```
+
+```java
+package com.ktdsuniversity.edu.extendsexam.practice;
+
+public class BatMobile extends SportsCar{
+
+	public BatMobile(String name) {
+		super(name);
+	}
+	
+	public void batPort() {
+		
+		System.out.println("배트포트 분리");
+	}
+	
+	public void printBatPort() {
+		
+		super.printVehicle();
+		
+	}
+}
+```
+
+```java
+package com.ktdsuniversity.edu.extendsexam.practice;
+
+public class CarMain {
+	
+	public static void main(String[] args) {
+		
+		Vehicle vehicle = new Vehicle("현대자동차");
+		vehicle.start();
+		vehicle.printVehicle();
+		
+		
+		EV ev = new EV("테슬라", 100);
+		ev.checkBattery();
+		ev.start();;
+		
+		
+		SportsCar sc = new SportsCar("페라리");
+		sc.start();
+		sc.turboMode();
+		
+		
+		BatMobile bm = new BatMobile("배트모빌");
+		bm.start();
+		bm.batPort();
+		bm.turboMode();
+		
+		
+	
+	}
+}
+```
+
