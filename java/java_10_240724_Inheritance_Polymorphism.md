@@ -9,24 +9,27 @@ package com.ktdsuniversity.edu.extendsexam;
 public class ContactMain {
 	public static void main(String[] args) {
 		
-		Contact[] contactArray = new Contact[4];
+		Contact[] contactArray = new Contact[5];
 		contactArray[0] = new Contact("민규", "010-4757-0218");
 		contactArray[1] = new Contact("미연", "010-3193-8727");
 		contactArray[2] = new Contact("용식", "010-4944-5119");
 		contactArray[3] = new Contact("지영", "010-2360-0960");
-		
+		contactArray[4] = new EmailContact("김", "010-2360-0960", "kim@korea.com");
 		
 		for(int i=0; i<contactArray.length; i++) {
 			
 			contactArray[i].printContact();
+			contactArray[i].phoneCall();
+			
+			if(contactArray[i] instanceof EmailContact) {
+				//EmailContact is a Contact
+				//Contact is not a EmailContact
+				//is a 관계가 역전 되어 있는 경우, 명시적 형변환을 사용한다.
+				EmailContact emailContactInstance = (EmailContact) contactArray[i];
+				emailContactInstance.sendEmail();
+			}
 			
 		}
-		
-		
-		
-		EmailContact kim = new EmailContact("김","010-1234-9784","kim@naver.com");
-		kim.printContact();
-		
 		
 		
 		
@@ -68,7 +71,13 @@ public class Contact {
 		System.out.println("이름 :" + this.name + ", 연락처 : " + this.phone + ", 주소 : " + this.address);
 	}
 	
+	public void phoneCall() {
+		
+		System.out.println("이름 : " + this.name + "에게 전화를 겁니다");
+	}
+	
 }
+
 ```
 ### 3. EmailContact
 ```java
@@ -81,6 +90,10 @@ package com.ktdsuniversity.edu.extendsexam;
  * 
  * 확장의 대상이 되는 클래스(Contact)의 생성자가 존재할 경우
  * 확장을 하는 클래스(EmailContact)에서 반드시 해당 생성자를 호출해야 한다. 
+ * 
+ * sub class is a Super class
+ * EmailContact is a Super class
+ * 
  */
 public class EmailContact extends Contact{
 
@@ -108,7 +121,14 @@ public class EmailContact extends Contact{
 		
 	}
 	
+	public void sendEmail() {
+		
+		System.out.println("이름 : " + super.getName() + "에게 이메일을 보냅니다.");
+		
+	}
+	
 }
+
 ```
 ---
 ### 1. Vehicle
