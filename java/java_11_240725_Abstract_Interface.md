@@ -215,6 +215,10 @@ public class CheckFileTypeAndMimeType extends AbstractFileTypeChecker{
 # 인터페이스
 * 서로 다른 두 시스템, 장치, 소프트웨어 따위를 서로 이어 주는 부분 또는 그런 접속 장치
 * 사용자인 인간과 컴퓨터를 연결하여 주는 장치, 키보드나 디스플레이 따위를 이른다.
+* UI(User Interface) 사람과 컴퓨터 시스템 프로그램 간 상호작용을 의미한다.
+* 서로 다른 주체 사이의 통신을 위한 규악
+* Java Interface : 클래스와 클래스가 상호작용할 수 있도록 표준을 제공
+* 완전 추상화 : 메소드 정의만 가능하고 구체적인 기능은 정의하지 않는다.
 
 # 인터페이스 실습
 
