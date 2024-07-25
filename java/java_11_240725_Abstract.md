@@ -206,3 +206,204 @@ public class CheckFileTypeAndMimeType extends AbstractFileTypeChecker{
 # 인터페이스
 * 서로 다른 두 시스템, 장치, 소프트웨어 따위를 서로 이어 주는 부분 또는 그런 접속 장치
 * 사용자인 인간과 컴퓨터를 연결하여 주는 장치, 키보드나 디스플레이 따위를 이른다.
+
+# 인터페이스 실습
+
+```java
+package com.ktdsuniversity.edu.interfaceexam;
+
+
+/**
+ * 인터페이스의 특징
+ * 
+ * - 메소드만 정의 - 추상 메소드
+ * 		- 어떻게 동작하는지는 관심이 없다
+ * 		- 인터페이스가 정해놓은 기능만 구현한다.
+ * 		- 인터페이스는 추상메소드만 정의한다.  
+ * 		- abstract는 기본적으로 생략 가능하다.
+ */
+
+public interface Calculator {
+
+	
+	
+	public int add(int a, int b);
+	
+	public int sub(int a, int b);
+	
+	public double div(int a, int b);
+	
+	public  int mul(int a, int b);
+
+}
+
+```
+
+
+```java
+package com.ktdsuniversity.edu.interfaceexam;
+
+public class SamsungCalc implements Calculator{
+
+	@Override
+	public int add(int a, int b) {
+	
+		return a + b;
+	}
+
+	@Override
+	public int sub(int a, int b) {
+	
+		return a - b;
+	}
+
+	@Override
+	public double div(int a, int b) {
+
+		return a / b;
+	}
+
+	@Override
+	public int mul(int a, int b) {
+
+		return a * b;
+	}
+
+}
+
+```
+
+
+```java
+package com.ktdsuniversity.edu.interfaceexam;
+
+public class LgCalc implements Calculator{
+
+	@Override
+	public int add(int a, int b) {
+		
+		return a + b;
+	}
+
+	@Override
+	public int sub(int a, int b) {
+		
+		if(a > b) {
+			return a - b;
+		}
+		
+		return b - a;
+	}
+
+	@Override
+	public double div(int a, int b) {
+		
+		if(a <= 0 || b <= 0)
+		{
+			return 0;
+		}
+		
+		return (double) a / b;
+	}
+
+	@Override
+	public int mul(int a, int b) {
+		
+		if(a <= 0 || b <= 0)
+		{
+			return 0;
+		}
+		
+		
+		return a * b;
+	}
+
+}
+
+```
+
+
+```java
+package com.ktdsuniversity.edu.interfaceexam;
+
+public class AppleCalc implements Calculator {
+
+	@Override
+	public int add(int a, int b) {
+
+		return a + b;
+	}
+
+	@Override
+	public int sub(int a, int b) {
+		
+		return a - b;
+	}
+
+	@Override
+	public double div(int a, int b) {
+	
+		double result = (double) a / b;
+		int intResult = (int) (result * 100);
+		return intResult / 100.0;
+	
+	}
+
+	@Override
+	public int mul(int a, int b) {
+		
+		return a * b;
+	}
+
+}
+
+```
+
+
+```java
+package com.ktdsuniversity.edu.interfaceexam;
+
+public class Test {
+
+	public static void main(String[] args) {
+		
+		Calculator ssCalc = new SamsungCalc();
+		Calculator lgCalc = new LgCalc();
+		Calculator appleCalc = new AppleCalc();
+		
+		
+		int addResult = ssCalc.add(10, 20);
+		int subResult = ssCalc.sub(10, 5);
+		int mulResult = ssCalc.mul(6, 7);
+		double divResult = ssCalc.div(10, 3);
+		
+		
+		System.out.println("SamsungCalc : " + addResult);
+		System.out.println("SamsungCalc : " + subResult);
+		System.out.println("SamsungCalc : " + mulResult);
+		System.out.println("SamsungCalc : " + divResult);
+		
+		addResult = lgCalc.add(10, 20);
+		subResult = lgCalc.sub(10, 20);
+		mulResult = lgCalc.mul(10, 20);
+		divResult = lgCalc.div(10, 20);
+		
+		System.out.println("LgCalc : " + addResult);
+		System.out.println("LgCalc : " + subResult);
+		System.out.println("LgCalc : " + mulResult);
+		System.out.println("LgCalc : " + divResult);
+		
+		addResult = appleCalc.add(10, 20);
+		subResult = appleCalc.sub(10, 20);
+		mulResult = appleCalc.mul(10, 20);
+		divResult = appleCalc.div(10, 20);
+		
+		System.out.println("AppleCalc : " + addResult);
+		System.out.println("AppleCalc : " + subResult);
+		System.out.println("AppleCalc : " + mulResult);
+		System.out.println("AppleCalc : " + divResult);
+	}
+
+}
+
+```
