@@ -510,6 +510,9 @@ public class Birthday {
 			int nowMonth = now.get(Calendar.MONTH) + 1;
 			int nowDate = now.get(Calendar.DAY_OF_MONTH);
 			
+			System.out.println("nowMonth : " + nowMonth);
+			System.out.println("nowDate : " + nowDate);
+			
 			if(nowMonth == birthMonth && nowDate == birthDate) {
 				
 				break;
