@@ -218,7 +218,7 @@ public static void main(String[] args) {
 
 # 7. 실행흐름 제어
 
-* if - else
+* if - else	
 
 `변수의 값에 따라 실행의 흐름을 바꾸어야 할 때 사용할 수 있음. 여러 경우의 수 중 단 하나의 경우만 실행함.`
 
