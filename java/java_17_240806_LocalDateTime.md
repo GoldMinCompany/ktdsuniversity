@@ -32,7 +32,7 @@ public class LocalDateTimeExam {
 		LocalTime now = LocalTime.now();
 		System.out.println(now);
 		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
 		String formattedTime = dtf.format(now);
 		System.out.println(formattedTime);
 		
@@ -48,7 +48,7 @@ public class LocalDateTimeExam {
 		LocalDateTime now = LocalDateTime.now();
 		System.out.println(now);
 		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH:mm:ss");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH:mm:ss.SSS 'ms'");
 		String formattedDateTime = dtf.format(now);
 		System.out.println(formattedDateTime);
 		
