@@ -1,9 +1,9 @@
 # LocalDateTime
 
 * Java 1.8 이후 Calendar를 대체하기 위해 날짜, 시간, 날짜와 시간 모두를 처리할 수 있는 Class가 3개 추가
-* 날짜만 가져오기 LocalDate
-* 시간만 가져오기 LocalTime
-* 날짜와 시간 모두 가져오기 LocalDateTime
+* 날짜만 가져오기 LocalDate Class
+* 시간만 가져오기 LocalTime Class
+* 날짜와 시간 모두 가져오기 LocalDateTime Class
 
 ```java
 package com.ktdsuniversity.datetime;
