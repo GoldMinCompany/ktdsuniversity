@@ -1,3 +1,7 @@
+# 익명 클래스
+* 익명 클래스 인스턴스를 생성 후 인스턴스를 파라미터로 대입하는 것보다 익명 클래스 인스턴스를 파라미터에 대입하고 생성하는 것이 일반적인 방법이다.
+
+
 # 객체 지향 프로그래밍
 
 * 객체 변수 할당할 수 있어야 한다. 
@@ -11,15 +15,14 @@
 * 함수를 파라미터로 전송 및 수신할 수 있어야한다.
 * 함수가 함수를 생성할 수 있어야 한다.
 * 함수가 함수를 반환 시킬 수 있어야한다.
+* 메소드와 함수의 input 값을 통해 정해진다.
+* 추상 메소드가 하나만 있는 인터페이스는 lambda로 변경 가능하다.
+* @FunctionalInterface의 목적은 lambda로 변경 가능함을 명시적으로 알려주는 기능만 한다.
 
-추상 메소드가 하나만 있는 인터페이스는 무조건 람다로 변경 가능하다.
-
-@FunctionalInterface의 목적은 람다로 변경 가능함을 명시적으로 알려주는 기능만 한다.
-
-lg.run(message -> System.out.println(message + "!!!")); //파라미터가 한개인 경우 소괄호 생략가능, 반환타입이 같다면 중괄호 생략가능, 인터페이스의 추상메소드를 구현
-
-인스턴스 대신 함수형 인터페이스를 파라미터로 전송한다.
-인터페이스를 함수로! 바꾸는 것이 lambda
+```java
+lg.run(message -> System.out.println(message));
+```
+위 코드에서 parameter가 하나인 경우 소괄호 생략가능하고 반환타입이 같다면, 중괄호 생략이 가능하며 인터페이스의 추상메소드를 구현한 것이다. 인스턴스를 생성하지 않고 함수형 인터페이스를 paramemter로 전송한다. 인터페이스에 정의된 추상메소드를 함수로 구현한 것이 lambda이다.  
 
 ```java
 package com.ktdsuniversity.edu.functional_anonymous;
@@ -177,12 +180,25 @@ public class Main {
 # Stream
 
 ### Stream의 특징
-* 중간함수
-* 최종함수
-중간함수는 최종함수가 실행되기 전까지 절대 동작하지 않는다. filter는 중간함수이다.
+* 병럴처리를 지원하는 내부 반복자이다.
+* collection과 배열을 stream으로 변환하여 여러가지 형태로 처리 가능하다.
+* 반복문을 사용하지 않고 collection 제어가 가능하다.
+* Stream에는 중간함수와 최종함수가 있고 중간함수(예를 들어, filter)는 최종함수가 실행되기 전까지 동작하지 않는다. 최종함수가 실행되기 전까지 실행결과를 확인하고 싶다면, peek 메서드를 사용한다. 
+
+### Stream 사용이유
+* 정렬, filtering, mapping을 통해 중복되던 반복문 코드를 사용하지 않아도 된다.
+* data를 제어하는 주체가 Java로 변경된다.
+  * data가 많을 수록 data를 정제하는 RDB 능력의 한계가 나타난다.
+  * 비정형 data는 RDB에서 정제할 수 없다.
+* RDB의 역할을 Java의 Stream이 대신 처리한다.
+
+### Stream(), filter(), map(), forEach()
+* Stream() : 기존의 코드를 stream으로 변경시키는 메서드이다. 
+* filter() : 주어진 조건을 만족하는 요소들로 구성된 stream을 반환한다.
+* map() : stream의 각 요소에 대하여 주어진 함수를 적용하여 다른 형태의 요소(타입 변환)로 변환한다.
+* forEach() : forEach는 Stream을 반환하지 않으므로, 최종함수이다. 반복 출력
 
 ### Stream 실습
-
 ```java
 package com.ktdsuniversity.edu.stream.introduce;
 
