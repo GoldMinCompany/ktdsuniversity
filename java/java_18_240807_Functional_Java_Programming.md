@@ -102,6 +102,37 @@ public interface DoubleClickEventListener {
 ```
 
 ```java
+package com.ktdsuniversity.edu.functional_anonymous;
+
+public class Printer {
+	
+	public void run(Printable printable) {
+		
+		printable.print();
+		printable.print("반갑습니다. 익명 클래스");
+		
+		
+	}
+	
+
+}
+```
+
+```java
+package com.ktdsuniversity.edu.functional_anonymous;
+
+@FunctionalInterface
+public interface Printable {
+
+	public default void print() {
+		System.out.println("출력합니다.");
+	};
+	
+	public void print(String message);
+}
+```
+
+```java
 package com.ktdsuniversity.edu.functional.lambda;
 
 import com.ktdsuniversity.edu.functional_anonymous.Printer;
