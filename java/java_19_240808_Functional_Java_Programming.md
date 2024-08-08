@@ -1,4 +1,4 @@
-# Filtering
+# filtering
 
 ```java
 DishList dishList = new DishList();
@@ -13,7 +13,7 @@ menuList.stream()
 * filter 함수를 이용하여 조건에 맞는 항목만 filtering 할 수 있다.
 * distinct()는 List의 중복된 항목을 제거한다.
 * sorted()는 List의 요소값들을 오름차순으로 정렬한다.
-# Slicing
+# slicing
 
 ```java
 DishList dishList = new DishList();
@@ -28,7 +28,7 @@ menuList.stream()
 ```
 * 위의 코드에서 limit() 함수를 통해 칼로리를 기준으로 오름차순으로 정렬된 Stream을 칼로리가 낮은 3개만 추출한다.
 * skip() 함수를 통해 Stream의 항목들 건너 뛸 수 있다.
-# Mapping
+# mapping
 ```java
 DishList dishList = new DishList();
 List<Dish> menuList = dishList.getDishList();
@@ -72,7 +72,7 @@ menuList.stream()
 	.distinct()
 	.forEach(letter -> System.out.println(">"+letter));
 ```
-# Finding
+# finding
 ```java
 //menuList에서 채식요리 중 하나 조회한다.
 //findAny
@@ -101,7 +101,7 @@ System.out.println(tempDish.getType());
 * Optional은 null값인지 아닌지 확인할 수 있는 isPresent 함수가 있다.
 * Optional을 통해 null 요소의 값을 유연하게 처리할 수 있다.
 * T get() 함수는 값이 있는 경우 값을 반환하고 null 값인 경우 NoSuchElementException을 발생시킨다. 
-# Matching
+# matching
 
 ```java
 // 모든 메뉴가 채식요리인가?
