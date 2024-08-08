@@ -10,6 +10,9 @@ menuList.stream()
         .forEach(dish -> System.out.println(dish.getName()));
 ```
 * 위의 코드에서 filter() 함수는 두번 사용되었고 채식요리가 아니고 칼로리가 400이상인 음식들만 filtering 한다.
+* filter 함수를 이용하여 조건에 맞는 항목만 filtering 할 수 있다.
+* distinct()는 List의 중복된 항목을 제거한다.
+* sorted()는 List의 요소값들을 오름차순으로 정렬한다.
 # Slicing
 
 ```java
@@ -24,6 +27,7 @@ menuList.stream()
         .forEach(dish -> System.out.println(dish.getName()));
 ```
 * 위의 코드에서 limit() 함수를 통해 칼로리를 기준으로 오름차순으로 정렬된 Stream을 칼로리가 낮은 3개만 추출한다.
+* skip() 함수를 통해 Stream의 항목들 건너 뛸 수 있다.
 # Mapping
 ```java
 DishList dishList = new DishList();
@@ -35,7 +39,8 @@ menuList.stream()
 ```
 * 위의 코드에서 map 함수를 통해 menuList의 generic을 Dish에서 String으로 변경된다.
 * map는 Stream의 data 형식을 변경시키는 함수이다.
-* 변경된 결과에 따라서 Stream의 generic으로 변경되고 map함수를 통한 data는 원본 data로 돌아갈 수 없다. 
+* 변경된 결과에 따라서 Stream의 generic으로 변경되고 map함수를 통한 data는 원본 data로 돌아갈 수 없다.
+
 # flatmapping
 ```java
 // 메뉴이름을 글자로 모두 분리해서 하나 씩 출력
@@ -67,7 +72,7 @@ menuList.stream()
 	.distinct()
 	.forEach(letter -> System.out.println(">"+letter));
 ```
-# Find
+# Finding
 ```java
 //menuList에서 채식요리 중 하나 조회한다.
 //findAny
@@ -92,7 +97,10 @@ System.out.println(tempDish.getName());
 System.out.println(tempDish.getCalories());
 System.out.println(tempDish.getType());
 ```
-
+* 불러온 Stream의 값이 null 일 수 있기 때문에 Optional이 사용된다.
+* Optional은 null값인지 아닌지 확인할 수 있는 isPresent 함수가 있다.
+* Optional을 통해 null 요소의 값을 유연하게 처리할 수 있다.
+* T get() 함수는 값이 있는 경우 값을 반환하고 null 값인 경우 NoSuchElementException을 발생시킨다. 
 # Matching
 
 ```java
@@ -106,3 +114,5 @@ boolean isAllVegetarian = menuList.stream()
 		
 System.out.println(isAllVegetarian ? "모든 메뉴가 채식요리이다." : "모든 메뉴가 채식요리는 아니다.");
 ```
+* Find와 마찬가지로 특정한 속성이 데이터 집합에 포함되어 있는지 여부를 검색하는데 사용된다.
+* Matching에는 allMatch, anyMatch, noneMatch, findFirst, findAny있다.  
