@@ -1,5 +1,39 @@
 # Generate Stream
+```java
+package com.ktdsuniversity.edu.stream.collecting.join;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.ktdsuniversity.edu.stream.introduce.Dish;
+import com.ktdsuniversity.edu.stream.introduce.DishList;
+
+public class Main {
+	
+	public static void printJoinAllMenuNames(String separator) {
+		
+		DishList dishList = new DishList();
+		
+		List<Dish> menuList = dishList.getDishList();
+		
+		//모든 메뉴의 이름을 연결해서 출력한다. 
+		String menuName = menuList.stream() //Stream<Dish>
+								  .map(dish -> dish.getName()) // Stream<String>
+								  .collect(Collectors.joining(separator));
+		
+		System.out.println(menuName);
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		printJoinAllMenuNames("");
+		printJoinAllMenuNames("-");
+		printJoinAllMenuNames(" , ");
+	}
+
+}
+```
 ```java
 package com.ktdsuniversity.edu.stream.generate.file;
 
