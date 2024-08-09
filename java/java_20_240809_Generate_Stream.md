@@ -58,11 +58,74 @@ public class Main {
 ```java
 package com.ktdsuniversity.edu.stream.generate.map;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class Main {
+	
+	public static void theaterSeat() {
+		
+		Map<String, List<Boolean>> seats = new HashMap<>();
+		
+		char A = 'A'; // 65
+		System.out.println(A + 0); // 65
+		
+		char Z = 'Z'; // 90
+		System.out.println(Z + 0); // 90
+		
+		for(char a = 'A'; a < 'Z' + 1; a++) {
+			
+			
+			List<Boolean> emptySeats = new ArrayList<>();
+			
+			for(int i=0; i < 15; i++) {
+				
+				emptySeats.add((int)(Math.random()*10) % 2 == 0);
+				
+			}
+			
+			seats.put(a + "", emptySeats);
+			
+		}
+		
+		
+		// D열에 남아있는 자리 중 D5번은 비어있나?
+		// 객체지향으로 풀면 더 간단하다. 
+		boolean isEmptyDSeats = seats.get("D").contains(true);
+		System.out.println(isEmptyDSeats ? "D열에 남아있는 자리가 있습니다" : "D열에 남아있는 자리가 없습니다.");
+		
+		
+		// D열에 남아있는 자리가 있나?
+		boolean existsSeat = seats.entrySet() // Set<Entry<String, List<Boolean>>>
+								   .stream() // Stream<Entry<String, List<Boolean>>>
+								   .filter(entry -> entry.getKey().equals("D")) // Stream<Entry<String, List<Boolean>>>
+								   .map(entry -> entry.getValue()) // Stream<List<Boolean>> --> Stream<Boolean>
+								   .flatMap(seatsOfD -> seatsOfD.stream()) //Stream<Stream<Boolean>> --> Stream<Boolean>
+								   .anyMatch(seat -> seat); // boolean
+		
+		System.out.println(existsSeat ? "D열에 남아있는 자리가 있습니다" : "D열에 남아있는 자리가 없습니다.");
+		
+		// Stream을 이용하는 것이 더 비효율적이다. 
+		// 1. 일반적인 코드로(객체지향) 작성
+		
+		boolean emptySeat = seats.get("D").get(4);
+		System.out.println(emptySeat ? "D5번 좌석은 앉을 수 있습니다." : "D5번 좌석은 이미 예약되어 있습니다.");
+		
+		
+		// 2. Stream으로 풀어보자
+		boolean isEmptyD5 = seats.entrySet() // Set<Entry<String, List<Boolean>>>
+								  .stream() // Stream<Entry<String, List<Boolean>>>
+								  .filter(entry -> entry.getKey().equals("D")) // Stream<Entry<String, List<Boolean>>>
+								  .map(entry -> entry.getValue().get(4)) // Stream<Boolean>
+								  .findFirst() // Optional <Boolean>
+								  .orElse(false); // boolean
+		
+		
+		System.out.println(isEmptyD5 ? "D5번 좌석은 앉을 수 있습니다." : "D5번 좌석은 이미 예약되어 있습니다.");
+	}
 	
 	public static void mapToStream() {
 		
@@ -115,6 +178,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		mapToStream();
+		theaterSeat();
 	}
 
 }
