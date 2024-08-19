@@ -20,3 +20,7 @@ DBeaver 왼쪽 위 아이콘 클릭하고 port 번호는 1521, Database는 XE(�
 Test Connect를 최초로 실행하고 설정을 끝마친다. 
 
 생성된 localhost를 선택하고 F2를 눌러 oracle21cXE - system으로 이름을 변경한다. 
+
+# DataBase
+
+* DBMS는 
