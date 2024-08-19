@@ -21,7 +21,7 @@ Test Connect를 최초로 실행하고 설정을 끝마친다.
 
 생성된 localhost를 선택하고 F2를 눌러 oracle21cXE - system으로 이름을 변경한다. 
 
-> Oracle HR schema 생성 후 왼쪽 후 아이콘을 클릭하여 oracle21cXE - hr을 생성(이름 변경)한다.
+> Oracle HR schema 생성 후 왼쪽 후 아이콘을 클릭하여 "oracle21cXE - hr"을 생성(이름 변경)한다.
 
 # DataBase
 
