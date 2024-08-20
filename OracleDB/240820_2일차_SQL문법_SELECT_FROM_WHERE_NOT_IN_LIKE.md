@@ -11,7 +11,7 @@ SELECT SYSDATE
 
 # 2. 날짜를 문자로 변경하는 방법
 
-* 현재 시간을 '연-월-일' 형식으로 변경
+* 현재 날짜을 '연-월-일' 형식으로 변경
 
 ```sql
 SELECT TO_CHAR(SYSDATE)
@@ -25,7 +25,7 @@ SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD')
   FROM DUAL
 ;
 ```
-
+* 현재 시간을 '시:분:초' 형식으로 변경
 ```sql
 SELECT TO_CHAR(SYSDATE, 'HH:MI:SS') -- 12시 베이스
 	 , TO_CHAR(SYSDATE, 'HH24:MI:SS') -- 24시 베이스
