@@ -95,9 +95,9 @@ SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID, SALARY, MANAGER_ID
 * LIKE
   - 하나의 COLUMN에 "포함"된 값을 검색한다.
   - 시작, 포함, 끝 검색 시 %가 사용된다.
-    - WHERE COLUMN LIKE 'D%' -> COLUMN의 값이 D로 시작한다.
-    - WHERE COLUMN LIKE '%D' -> COLUMN의 값이 D로 끝난다.
-    - WHERE COLUMN LIKE '%D%' -> COLUMN의 값이 D로 시작, 끝 또는 D가 포함된다.
+    - WHERE COLUMN_NAME LIKE 'D%' -> COLUMN의 값이 D로 시작한다.
+    - WHERE COLUMN_NAME LIKE '%D' -> COLUMN의 값이 D로 끝난다.
+    - WHERE COLUMN_NAME LIKE '%D%' -> COLUMN의 값이 D로 시작, 끝 또는 D가 포함된다.
   - LIKE를 사용하여 글자의 수를 체크할 수 있다. 와일드 카드 : _ (언더바)
     - COLUMN_NAME LIKE '__' -> COLUMN_NAME의 값이 두 글자인가?
     - COLUMN_NAME LIKE '_____' -> COLUMN_NAME의 값이 다섯 글자인가?
