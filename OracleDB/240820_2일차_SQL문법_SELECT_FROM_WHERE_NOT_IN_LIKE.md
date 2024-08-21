@@ -2,7 +2,7 @@
 # 1. 날짜 조회하는 방법
 
 * 현재 시간을 조회
-  - DUAL은 row가 한개 이고 의미없는 TABLE
+  - DUAL은 row가 한개 이고 의미없는 DUMMY TABLE 
 ```sql
 SELECT SYSDATE
   FROM DUAL
