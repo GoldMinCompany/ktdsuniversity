@@ -1,7 +1,7 @@
 # 집계함수
 
 * 개수 세기 COUNT(COLUMN_NAME)
-
+  - 행의 수
 ```sql
 SELECT COUNT(EMPLOYEE_ID)
   FROM EMPLOYEES
@@ -18,3 +18,74 @@ SELECT COUNT(1)
 1은 특별한 의미를 갖지 않고 의미 없는 숫자를 사용하여 숫자를 센다.
 
 * MAX
+  - Column의 값 중 최댓값을 리턴하는 집계함수이다.
+ 
+* MIN
+  - Column의 값 중 최솟값을 리턴하는 집계함수이다.
+ 
+* AVG
+  - Column의 값의 평균을 리턴하는 집계함수이다.
+  - AVG 집계함수는 Number type만 연산이 가능하다.
+ 
+* SUM
+  - Column의 값의 총합을 리턴하는 집계함수이다.
+  - AVG 집계함수와 마찬가지로 Number type만 연산이 가능하다.
+
+# GROUP BY
+
+* GROUP BY가 포함된 Query 문에서는 '*'를 사용할 수 없다.
+* GROUP BY는 하나의 정보를 축약 해 놓은 것이 집계이기 때문에 집계함수와 Column은 동시에 사용할 수 없다
+* 반드시 GROUP BY를 입력해야 한다.
+* GROUP BY는 Table을 Column의 기준에 따라서 임시 Table로 그룹화한 것이다.
+* Table에 굉장히 많은 Row가 있을 때, GROUP BY를 사용할 경우 성능이 현저히 낮아지기 때문에 GROUP BY는 ORDER BY와 더불어 사용하지 않는다. 
+
+```sql
+SELECT MAX(SALARY)
+     , MIN(SALARY)
+     , DEPARTMENT_ID
+  FROM EMPLOYEES
+ GROUP BY DEPARTMENT_ID
+ ORDER BY DEPARTMENT_ID ASC
+ ;
+```
+
+# Sub Query
+* SELECT 문 안의 SELECT 문
+* 조회하려는 대상을 정확히 알기 못하거나 조회하려는 대상이 하나 이상일 경우 사용한다.
+
+```sql
+SELECT *
+  FROM TABLE
+ WHERE COLUMNS_NAME = (SELECT COLUMNS_NAME
+                         FROM TABLE
+                        WHERE CONDITION)
+```
+
+```sql
+SELECT *
+  FROM EMPLOYEES
+ WHERE COMMISSION_PCT = (SELECT MAX(COMMISSION_PCT)
+                           FROM EMPLOYEES)
+;
+```
+```sql
+SELECT SALARY
+     , COMMISSION_PCT
+  FROM EMPLOYEES
+ WHERE COMMISSION_PCT = (SELECT MIN(COMMISSION_PCT)
+                           FROM EMPLOYEES)
+;
+```
+
+# HAVING
+* GROUP BY된 결과를 집계함수로 Filtering 할 수 있다.
+* HAVING을 통해 GROUP BY 통해 그룹화된 Data를 Filtering 할 수 있다.
+
+```sql
+SELECT MANAGER_ID
+     , COUNT(1)
+  FROM EMPLOYEES
+ GROUP BY MANAGER_ID
+HAVING COUNT(1) >= 3
+;
+```
