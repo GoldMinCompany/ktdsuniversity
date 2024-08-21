@@ -99,22 +99,26 @@ HAVING COUNT(1) >= 3
 
 # JOIN 관계에 있는 데이터는 여러가지 형태의 관계가 형성된다.
 * 1:1
-  - 한 테이블의 PK가 다른 테이블의 FK에 하나만 존재하는 관계
+  - 한 테이블의 Primary key가 다른 테이블의 Foreign key에 하나만 존재하는 관계
   - 만들어서는 안되는 관계이다. 단, 컬럼의 수가 40개 이상 넘어갈 경우 테이블을 분리하여 1:1관계를 맺는다.
 
 * 1:N
-  - 한 테이블의 PK가 다른 테이블의 FK에 여러 개가 존재하는 관계
+  - 한 테이블의 Primary key가 다른 테이블의 Foreign key에 여러 개가 존재하는 관계
   - 가장 흔하게 만들게 되는 관계
 
 * N:N
   - 물리적으로 존재할 수 없는 관계
  
 # PK, FK 제약조건의 역할과 위배되는 케이스
-* FK로 다른 테이블의 PK를 참조할 때, PK값에 정의되어 있는 값만 사용가능하다. 
-* PK와 FK는 테이블의 필수 요소로 테이블은 이 둘 중 하나 이상은 반드시 포함해야한다.
+* Foreign key로 다른 테이블의 Primary key를 참조할 때, Primary key값에 정의되어 있는 값만 사용가능하다. 
+* Primary key와 Foreign key는 테이블의 필수 요소로 테이블은 이 둘 중 하나 이상은 반드시 포함해야한다.
 
 # ER-D(Entity Relationship Diagram, 객체 관계도)
 * 식별 관계
-  - Table A의 PK가 다른 테이블의 FK로 참조가 되고 1:N 관계가 성립하며 FK가 PK가 된다. PFK 표현하고 실선으로 표시한다.
+  - Table A의 Primary key가 다른 테이블의 Foreign key로 참조가 되고 1:N 관계가 성립하며 Foreign key가 Primary key가 된다. PFK 표현하고 실선으로 표시한다.
 * 비식별 관계
-  - Table A의 PK가 다른 테이블의 FK로 참조된다. 점섬으로 표시된다.
+  - Table A의 Primary key가 다른 테이블의 Foreign key로 참조된다. 점섬으로 표시된다.
+
+# 멀티키
+* Primary key가 두개인 경우 멀티키라고 한다.
+* 멀티키의 특징은 데이터 쌍 전체가 하나의 Primary key가 된다. 
