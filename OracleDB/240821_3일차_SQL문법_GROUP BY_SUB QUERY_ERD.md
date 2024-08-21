@@ -52,7 +52,9 @@ SELECT MAX(SALARY)
 # Sub Query
 * SELECT 문 안의 SELECT 문
 * 조회하려는 대상을 정확히 알기 못하거나 조회하려는 대상이 하나 이상일 경우 사용한다.
-
+* SELECT (SELECT ... FROM) -> Scala query
+* FROM (SELECT ... FROM) -> Inline view
+* WHERE COLUMNS_NAME = (SELECT ... FROM) -> Sub query
 ```sql
 SELECT *
   FROM TABLE
@@ -89,3 +91,10 @@ SELECT MANAGER_ID
 HAVING COUNT(1) >= 3
 ;
 ```
+# Table join
+* Table 마다 Primary key가 있고 PK를 참조하는 키를 Foreign key라 한다.
+* Parimary key와 Foreign key 연결하여 관련된 정보를 조회한다. 
+* 예를들어 DEPARTMENT Table의 PK인 DEPARTMENT_ID는 EMPLOYEES Table의 FK인 DEPARTMENT_ID와 같다.
+* 이러한 연결상태를 JOIN이라 하고 연결 관계를 생성할 수 있다.
+
+
