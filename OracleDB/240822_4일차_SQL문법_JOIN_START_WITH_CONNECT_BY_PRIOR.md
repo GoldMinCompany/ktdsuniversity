@@ -1,3 +1,21 @@
+* Table Join
+  - 테이블의 Primary key와 foreign key를 연결하여 관련 정보를 조회한다.
+  - 여러개의 테이블에 흩어져 있는 데이터 컬럼을 한번에 조회할 때 사용한다.
+  - JOIN 시 테이블간의 Alias 별칭을 사용해 테이블을 구분하여 사용한다.
+ 
+* 재귀 조인(Recursive join)
+  - 한 테이블에 pk가 존재하고 해당 pk를 참조하는 fk가 동시에 있는 경우
+  - 계층형 관계에 사용한다.
+  - 같은 테이블을 구분하기 위해 Alias를 명확히 작성한다.
+  - 재귀 조인을 잘 구분하기 위해서는 한 개의 테이블을 두개의 테이블로 나눠 분석한다.
+* 계층 조회(카테고리 분류, 대댓글 등)
+   - START WITH [CONDITION] CONNECT BY PRIOR [관계 조건]
+   - 100번 사원의 부하직원들을 모두 조회하는 Query 문
+```sql
+START WITH EMPLOYEE_ID = 100 -- 최상위 row가 될 기준
+CONNECT BY PRIOR EMPLOYEE_ID = MANAGER_ID -- Data를 연결할 기준
+```
+
 ```sql
 -- TODO
 -- 1. 서브쿼리 조인문제
