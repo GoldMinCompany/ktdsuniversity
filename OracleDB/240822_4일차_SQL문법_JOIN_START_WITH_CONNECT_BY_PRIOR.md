@@ -20,11 +20,11 @@
   - 재귀 조인을 잘 구분하기 위해서는 한 개의 테이블을 두개의 테이블로 나눠 분석한다.
     
 # 계층 쿼리(조직도, 카테고리 분류, 대댓글 등에 활용)
-   - START WITH [CONDITION] CONNECT BY PRIOR [관계 조건]
    - 오라클에서만 지원하는 기능
    - 계층 쿼리는 계급적이고, 수직적인 관계를 갖고있다.
    - LEVEL 키워드를 통해 계층의 깊이를 알 수 있다. 
    - 100번 사원의 부하직원들을 모두 조회하는 Query 문
+   - START WITH [CONDITION] CONNECT BY PRIOR [관계 조건]
    - EMPLOYEE_ID(100)이 누군가의 MANAGER_ID(100)이 되어야 한다. 연결된 모든 부하직원들을 조회한다.
      
 ```sql
