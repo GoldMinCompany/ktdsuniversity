@@ -11,6 +11,7 @@
 * 계층 조회(카테고리 분류, 대댓글 등)
    - START WITH [CONDITION] CONNECT BY PRIOR [관계 조건]
    - 100번 사원의 부하직원들을 모두 조회하는 Query 문
+   - EMPLOYEE_ID(100)이 누군가의 MANAGER_ID(100)이 되어야 한다. 연결된 모든 부하직원들을 조회한다. 
 ```sql
 START WITH EMPLOYEE_ID = 100 -- 최상위 row가 될 기준
 CONNECT BY PRIOR EMPLOYEE_ID = MANAGER_ID -- Data를 연결할 기준
