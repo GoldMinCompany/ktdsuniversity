@@ -1,0 +1,81 @@
+```sql
+/*
+INSERT INTO TABLE (COLUMN, COLUMN, COLUMN)
+VALUES (VALUE, VALUE, VALUE)
+;
+*/
+
+INSERT INTO AGE_LMT 
+ (AGE_LMT_ID
+, AGE_LMT_NM)
+VALUES 
+ ('00002'
+ ,'7세 이상 관람가')
+;
+
+
+INSERT INTO AGE_LMT 
+ (AGE_LMT_ID
+, AGE_LMT_NM)
+VALUES 
+ ('00003'
+ ,'12세 이상 관람가')
+;
+
+INSERT INTO AGE_LMT 
+ (AGE_LMT_ID
+, AGE_LMT_NM)
+VALUES 
+ ('00004'
+ ,'15세 이상 관람가')
+;
+
+INSERT INTO AGE_LMT 
+ (AGE_LMT_ID
+, AGE_LMT_NM)
+VALUES 
+ ('00005'
+ ,'19세 이상 관람가')
+;
+
+
+SELECT MV_INFO_PK_SEQ.NEXTVAL
+  FROM DUAL
+;
+
+INSERT INTO MV_INFO
+ (MV_ID
+, MV_TTL
+, OPL_DT
+, SCRNG_TM
+, AGE_LMT_ID
+, PSTR
+, PLT)
+VALUES
+ (MV_INFO_PK_SEQ.NEXTVAL
+, '매트릭스'
+, TO_DATE('1999-05-15', 'YYYY-MM-DD')
+, 136
+, '00003'
+, 'https://media.themoviedb.org/t/p/w300_and_h450_bestv2/yI9r0iz2XvlevxUzxvdoQmv3yce.jpg'
+, ' ')
+;
+
+
+
+SELECT M.MV_ID 
+     , M.MV_TTL
+     , A.AGE_LMT_ID 
+     , A.AGE_LMT_NM
+  FROM MV_INFO M
+ INNER JOIN AGE_LMT A
+    ON M.AGE_LMT_ID = A.AGE_LMT_ID
+;
+
+-- 'MA-20240827-000001'
+-- 접두어 - 년월일 - 시퀀스
+
+SELECT 'MA' || '-' || TO_CHAR(SYSDATE, 'YYYY-MM-DD') || '-' || LPAD(MV_ACTR_PK_SEQ.NEXTVAL, 6, '0')
+  FROM DUAL
+;
+```
